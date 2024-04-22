@@ -6,23 +6,10 @@ import React from "react";
 
 export default function NavbarComponent() {
   const pathname = usePathname();
+  console.log(pathname);
   return (
     <nav className={` border-b border-b-gray relative`}>
       <div className="flex items-center py-4 pl-4 pr-10">
-        {/* <a
-          href="https://flowbite.com/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
-          </span>
-        </a> */}
-
         <div className="w-full flex justify-between ">
           <div className="flex md:order-2 gap-3 ">
             <button
@@ -133,7 +120,7 @@ export default function NavbarComponent() {
                   className={` flex gap-2 py-2 px-3 rounded md:bg-transparent md:p-0 md:dark:text-blue-500`}
                   aria-current="page"
                 >
-                  {pathname === "/todo-list" ? (
+                  {pathname.startsWith("/todo-list") ? (
                     <Image
                       src="/assets/icons/list-filled-blue.svg"
                       width={18}
@@ -149,7 +136,9 @@ export default function NavbarComponent() {
 
                   <span
                     className={`${
-                      pathname === "/todo-list" ? "text-blue-700 " : "text-gray"
+                      pathname.startsWith("/todo-list")
+                        ? "text-blue-700 "
+                        : "text-gray"
                     } text-lg`}
                   >
                     List
@@ -163,7 +152,7 @@ export default function NavbarComponent() {
                   className=" flex gap-2 py-2 px-3 text-gray rounded md:bg-transparent  md:p-0 md:dark:text-blue-500"
                   aria-current="page"
                 >
-                  {pathname === "/todo-board" ? (
+                  {pathname.startsWith("/todo-board") ? (
                     <Image
                       src="/assets/icons/board-filled-blue.svg"
                       width={18}
@@ -179,7 +168,9 @@ export default function NavbarComponent() {
 
                   <span
                     className={`${
-                      pathname === "/todo-board" ? "text-blue-700" : "text-gray"
+                      pathname.startsWith("/todo-board")
+                        ? "text-blue-700"
+                        : "text-gray"
                     } text-lg`}
                   >
                     Board
@@ -187,8 +178,14 @@ export default function NavbarComponent() {
                 </Link>
               </li>
             </ul>
-            
-            <div className={`${pathname === "/todo-list" ? "border-b-2 border-b-blue-700 absolute bottom-0 w-20 left-2" : "border-b-2 border-b-blue-700 absolute bottom-0 w-90 left-24"}`}></div>
+
+            <div
+              className={`${
+                pathname.startsWith("/todo-list")
+                  ? "border-b-2 border-b-blue-700 absolute bottom-0 w-20 left-2"
+                  : "border-b-2 border-b-blue-700 absolute bottom-0 w-90 left-24"
+              }`}
+            ></div>
           </div>
         </div>
       </div>

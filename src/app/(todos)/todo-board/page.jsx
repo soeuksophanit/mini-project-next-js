@@ -1,4 +1,5 @@
 import ListBoardComponentHeader from "@/components/ListBoardComponentHeader";
+import TodoCardComponent from "@/components/TodoCardComponent";
 import React from "react";
 
 const page = () => {
@@ -24,6 +25,9 @@ const page = () => {
             >
               {title}
             </p>
+            <div>
+              <TodoCardComponent />
+            </div>
           </div>
         ))}
       </div>

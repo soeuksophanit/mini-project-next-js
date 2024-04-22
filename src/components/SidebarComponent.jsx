@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
 import WorkspacePopupComponent from "./WorkspacePopupComponent";
+import Link from "next/link";
 
 export default function SidebarComponent() {
   return (
@@ -21,8 +22,7 @@ export default function SidebarComponent() {
       <div className="flex items-center mt-5 w-full">
         <div className="rounded-full w-4 h-4 bg-todo"></div>
         <div className="flex justify-between w-full pl-3">
-          <p>HRD Design</p>
-
+          <Link href={"/todo-list/20?sidebar=workspace"}>HRD Design</Link>
           <EditDeleteDropDownComponent />
         </div>
       </div>

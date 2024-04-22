@@ -2,11 +2,11 @@ import ListBoardComponentHeader from "@/components/ListBoardComponentHeader";
 import MonthlyStatisticsComponent from "@/components/MonthlyStatisticsComponent";
 import React from "react";
 
-const page = () => {
+const page = ({ searchParams: { sidebar } }) => {
   return (
     <div className="grid grid-cols-2 gap-10">
       <div>
-        <ListBoardComponentHeader />
+        <ListBoardComponentHeader sidebarTab={sidebar} />
       </div>
       <div>
         <MonthlyStatisticsComponent />
