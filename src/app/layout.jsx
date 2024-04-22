@@ -11,14 +11,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="font-SFProDisplay">
-        <main className="layout grid grid-cols-[305px_1fr]">
+        <main className="layout grid grid-cols-[305px_1fr] gap-6">
           <SidebarComponent />
           <section className="right-side grid grid-rows-[auto_1fr]">
             <NavbarComponent />
-            <main>
-              <section className="path-link">
-                <p>gjeweefdwh </p>
-              </section>
+            <main className="flex flex-col py-6 gap-6">
+              <section className="path-link"></section>
               {children}
             </main>
           </section>
