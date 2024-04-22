@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 
 export default function ListBoardComponentHeader({ sidebarTab }) {
-  console.log(sidebarTab);
   return (
     <>
       <div className="text-gray flex text-lg gap-3 mb-5">

@@ -18,7 +18,6 @@ export default function page() {
       password: data?.password,
       redirect: false,
     });
-    console.log("Res : ", response);
     if (!response?.error) {
       router.push("/todo-list");
       router.refresh();

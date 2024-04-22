@@ -3,8 +3,11 @@ import React from "react";
 import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
 import WorkspacePopupComponent from "./WorkspacePopupComponent";
 import Link from "next/link";
+import { getAllWorkspace } from "@/services/workSpaceService";
 
-export default function SidebarComponent() {
+export default async function SidebarComponent() {
+  const workspaces = await getAllWorkspace();
+  console.log(workspaces);
   return (
     <div className="pl-10 mt-6 h-screen">
       <div className="flex justify-between">
@@ -19,13 +22,24 @@ export default function SidebarComponent() {
       </div>
 
       {/* each workspace */}
-      <div className="flex items-center mt-5 w-full">
-        <div className="rounded-full w-4 h-4 bg-todo"></div>
-        <div className="flex justify-between w-full pl-3">
-          <Link href={"/todo-list/20?sidebar=workspace"}>HRD Design</Link>
-          <EditDeleteDropDownComponent />
+      {workspaces.map((ws, idx) => (
+        <div key={idx} className="flex items-center mt-5 w-full">
+          <div
+            className={
+              idx % 2 == 0
+                ? "rounded-full w-4 h-4 bg-todo"
+                : "rounded-full w-4 h-4 bg-indigo-500 "
+            }
+          ></div>
+          <div className="flex justify-between w-full pl-3">
+            <Link href={`/todo-list/${ws.workSpaceId}?sidebar=workspace`}>
+              {ws.workspaceName}
+            </Link>
+
+            <EditDeleteDropDownComponent />
+          </div>
         </div>
-      </div>
+      ))}
 
       {/* favorite*/}
       <div className="flex justify-between mt-10">

@@ -2,7 +2,7 @@ import NavbarComponent from "@/components/NavbarComponent";
 import SidebarComponent from "@/components/SidebarComponent";
 import React from "react";
 
-export default function layout({ children }) {
+export default async function layout({ children }) {
   return (
     <main>
       <main className="layout grid grid-cols-[305px_1fr] gap-6">

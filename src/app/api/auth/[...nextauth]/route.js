@@ -22,7 +22,6 @@ const handler = NextAuth({
             }),
           }
         );
-        console.log("Response : ", response);
         return response;
       },
     }),

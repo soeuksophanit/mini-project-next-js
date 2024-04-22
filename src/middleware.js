@@ -10,4 +10,4 @@ export default function middleware(request) {
   }
 }
 
-export const config = { matcher: ["/todo-list", "/todo-board"] };
+export const config = { matcher: ["/todo-list", "/todo-board", "/"] };
