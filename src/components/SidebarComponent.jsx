@@ -7,7 +7,8 @@ import { getAllWorkspace } from "@/services/workSpaceService";
 
 export default async function SidebarComponent() {
   const workspaces = await getAllWorkspace();
-  console.log(workspaces);
+  const favorite = workspaces.filter((w) => w.isFavorite);
+  console.log("Fave ", favorite);
   return (
     <div className="pl-10 mt-6 h-screen">
       <div className="flex justify-between">
@@ -23,7 +24,10 @@ export default async function SidebarComponent() {
 
       {/* each workspace */}
       {workspaces.map((ws, idx) => (
-        <div key={idx} className="flex items-center mt-5 w-full">
+        <div
+          key={idx}
+          className="flex items-center mt-5 w-full hover:bg-slate-200 duration-300 p-2 rounded-sm"
+        >
           <div
             className={
               idx % 2 == 0
@@ -49,12 +53,18 @@ export default async function SidebarComponent() {
       </div>
 
       {/* each favorite workspace */}
-      <div className="flex items-center mt-5 w-full">
-        <div className="rounded-full w-4 h-4 bg-workingOn"></div>
-        <div className="flex justify-between w-full pl-3">
-          <p>GKS Scholarship</p>
-        </div>
-      </div>
+      {favorite.map((fav, idx) => (
+        <React.Fragment key={idx}>
+          <div className="flex items-center mt-5 w-full">
+            <div className="rounded-full w-4 h-4 bg-workingOn"></div>
+            <div className="flex justify-between w-full pl-3">
+              <Link href={`/todo-list/${fav.workSpaceId}?sidebar=favorite`}>
+                {fav.workspaceName}
+              </Link>
+            </div>
+          </div>
+        </React.Fragment>
+      ))}
     </div>
   );
 }

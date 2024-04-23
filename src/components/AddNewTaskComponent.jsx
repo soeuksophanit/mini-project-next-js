@@ -1,7 +1,12 @@
+import { addTask } from "@/actions/todoAction";
+import { getAllWorkspace } from "@/services/workSpaceService";
 import Image from "next/image";
 import React from "react";
 
-export default function AddNewTaskComponent() {
+export default async function AddNewTaskComponent({ id }) {
+  const workspaces = await getAllWorkspace();
+  const { workspaceName } = workspaces.filter((w) => w.workSpaceId == id)[0];
+
   return (
     <div>
       <label htmlFor="my_modal_7" className="cursor-pointer">
@@ -34,7 +39,7 @@ export default function AddNewTaskComponent() {
         <div className="modal-box">
           <div>
             <h3 className="text-gray">
-              Workspace &gt; <span>HRD Design</span>
+              Workspace &gt; <span>{workspaceName}</span>
             </h3>
             <label className="modal-backdrop text-black" htmlFor="my_modal_7">
               <p className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -43,7 +48,7 @@ export default function AddNewTaskComponent() {
             </label>
           </div>
 
-          <form className="space-y-1">
+          <form className="space-y-1" action={addTask}>
             {/* title */}
             <h3 className="text-lg">Title</h3>
             <input
@@ -80,6 +85,17 @@ export default function AddNewTaskComponent() {
               className="block border border-gray rounded-lg w-full py-2 px-5 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-1"
             />
 
+            <h3 className="text-lg">Workspace ID</h3>
+            <input
+              placeholder="Insert your task's end date"
+              type="text"
+              name="workspaceId"
+              // disabled
+              value={id}
+              // defaultValue={id}
+              className="block border border-gray rounded-lg w-full py-2 px-5 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-1"
+            />
+
             <div className="pt-5">
               <button
                 type="submit"
@@ -90,14 +106,6 @@ export default function AddNewTaskComponent() {
             </div>
           </form>
         </div>
-        {/* <label className="modal-backdrop" htmlFor="my_modal_7">
-          Close
-        </label> */}
-        {/* <label className="modal-backdrop" htmlFor="my_modal_7">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-            ✕
-          </button>
-        </label> */}
       </div>
     </div>
   );

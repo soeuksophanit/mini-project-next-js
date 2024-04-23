@@ -9,12 +9,6 @@ export default function TodoCardComponent() {
         <div className="flex justify-between">
           <p>Slack Integration</p>
           <div className="absolute top-2 right-3">
-            {/* <Image
-              src={"/assets/icons/tabler_dots.svg"}
-              width={20}
-              height={20}
-              alt={"edit delete card"}
-            /> */}
             <EditDeleteDropDownComponent />
           </div>
         </div>

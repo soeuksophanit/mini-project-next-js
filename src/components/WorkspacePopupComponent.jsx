@@ -1,4 +1,5 @@
 import { addNewWorkspace } from "@/services/workSpaceService";
+import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import React from "react";
 
@@ -8,6 +9,7 @@ export default async function WorkspacePopupComponent() {
     const workspace = form.get("workspaceName");
     console.log("New workspace : ", workspace);
     addNewWorkspace(workspace);
+    revalidatePath("/todo-list");
   };
 
   return (
