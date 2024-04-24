@@ -1,7 +1,9 @@
 import Image from "next/image";
 import React from "react";
+import DeleteButton from "./DeleteButton";
 
-export default function EditDeleteDropDownComponent() {
+export default function EditDeleteDropDownComponent({ id }) {
+  console.log("id Edit component", id);
   return (
     <details className="dropdown">
       <summary className=" btn bg-white shadow-none border-0 p-0 h-0 min-h-0">
@@ -18,7 +20,7 @@ export default function EditDeleteDropDownComponent() {
           <a>Edit</a>
         </li>
         <li>
-          <a>Delete</a>
+          <DeleteButton id={id} />
         </li>
       </ul>
     </details>

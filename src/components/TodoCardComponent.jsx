@@ -2,23 +2,29 @@ import Image from "next/image";
 import React from "react";
 import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
 
-export default function TodoCardComponent() {
+export default function TodoCardComponent({ task }) {
   return (
     <div className="border border-gray rounded-lg w-todoCardWidt mt-5 relative">
       <div className="p-5">
         <div className="flex justify-between">
-          <p>Slack Integration</p>
+          <p className="text-[20px] capitalize">{task?.taskTitle}</p>
           <div className="absolute top-2 right-3">
             <EditDeleteDropDownComponent />
           </div>
         </div>
 
-        <p className="text-gray">Description</p>
+        <p className="text-gray">{task?.description}</p>
         <div className="flex justify-between items-center mt-5">
           <div className="bg-bgTag text-colorTag py-1 px-5 rounded-lg font-bold">
-            Development
+            {task?.tag}
           </div>
-          <div className="rounded-full w-5 h-5 bg-todo"></div>
+          <div
+            className={`rounded-full w-5 h-5 ${(task.status = 1
+              ? "bg-todo"
+              : (task.status = 2
+                  ? " bg-workingOn"
+                  : (task.status = 3 ? "bg-checking" : "bg-completed")))}`}
+          ></div>
         </div>
       </div>
 
@@ -30,7 +36,7 @@ export default function TodoCardComponent() {
           height={20}
           alt="calendar icon"
         />
-        <p className="text-gray">March 1, 2024</p>
+        <p className="text-gray">{new Date(task.dueDate).toDateString()}</p>
       </div>
     </div>
   );

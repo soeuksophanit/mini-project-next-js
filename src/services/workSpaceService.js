@@ -1,4 +1,4 @@
-import next from "next";
+"use server";
 import { revalidatePath, revalidateTag } from "next/cache";
 
 export const getAllWorkspace = async () => {
@@ -23,6 +23,21 @@ export const getAllWorkspace = async () => {
   return workspaces.data;
 };
 
+export const deleteWorkspace = async (workspaceId) => {
+  const request = await fetch(
+    `${process.env.NEXTAUTH_URL}/v1/workspaces/${workspaceId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.TOKEN}`,
+      },
+    }
+  );
+  revalidateTag("workspace");
+  revalidatePath("/todo-list");
+};
+
 export const addNewWorkspace = async (newWorkSpace) => {
   const request = await fetch(`${process.env.NEXTAUTH_URL}/v1/workspaces`, {
     method: "POST",
@@ -34,5 +49,4 @@ export const addNewWorkspace = async (newWorkSpace) => {
   });
   const workspace = await request.json();
   revalidateTag("workspace");
-  console.log("new workspace : ", workspace);
 };

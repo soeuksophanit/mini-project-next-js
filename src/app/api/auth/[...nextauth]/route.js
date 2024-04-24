@@ -22,7 +22,9 @@ const handler = NextAuth({
             }),
           }
         );
-        return response;
+        const { token } = await response.json();
+        if (!token) return null;
+        return token;
       },
     }),
 

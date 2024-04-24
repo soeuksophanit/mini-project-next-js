@@ -5,8 +5,8 @@ import React from "react";
 
 export default async function AddNewTaskComponent({ id }) {
   const workspaces = await getAllWorkspace();
-  const { workspaceName } = workspaces.filter((w) => w.workSpaceId == id)[0];
-
+  if (!workspaces.length) return;
+  const { workspaceName } = workspaces.find((w) => w.workSpaceId == id);
   return (
     <div>
       <label htmlFor="my_modal_7" className="cursor-pointer">

@@ -1,3 +1,5 @@
+import { revalidateTag } from "next/cache";
+
 export const getAllTodoLists = async (workspaceId) => {
   const results = await fetch(
     `${process.env.NEXTAUTH_URL}/v1/tasks?workspaceId=${workspaceId}`,
@@ -12,7 +14,7 @@ export const getAllTodoLists = async (workspaceId) => {
     }
   );
   const todos = await results.json();
-  console.log(todos);
+  revalidateTag("task");
   return todos.data;
 };
 
@@ -35,8 +37,6 @@ export const addNewTask = async (task, workspaceId) => {
         workspaceId,
       }),
     },
-    { next: { revalidatePath: 2 } }
+    { next: { tag: ["task"] } }
   );
-  const newTask = await request.json();
-  console.log("new task : ", newTask);
 };

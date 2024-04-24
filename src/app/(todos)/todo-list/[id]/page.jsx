@@ -18,14 +18,14 @@ const page = async ({ params: { id }, searchParams: { sidebar } }) => {
         />
         <div className="flex flex-col gap-3">
           {todos.map((todo, idx) => (
-            <>
+            <React.Fragment key={idx}>
               <CardTodo key={idx} workspaceId={id} todo={todo} />
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>
       <div>
-        <MonthlyStatisticsComponent />
+        <MonthlyStatisticsComponent todos={todos} />
       </div>
       <div className="fixed bottom-4 right-4">
         <AddNewTaskComponent id={parseInt(id)} />

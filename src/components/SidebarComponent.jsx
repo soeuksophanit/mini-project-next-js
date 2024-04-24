@@ -54,8 +54,7 @@ export default async function SidebarComponent() {
             <Link href={`/todo-list/${ws.workSpaceId}?sidebar=workspace`}>
               {ws.workspaceName}
             </Link>
-
-            <EditDeleteDropDownComponent />
+            <EditDeleteDropDownComponent id={ws.workSpaceId} />
           </div>
         </div>
       ))}

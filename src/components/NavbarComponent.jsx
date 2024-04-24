@@ -6,7 +6,6 @@ import React from "react";
 
 export default function NavbarComponent() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <nav className={` border-b border-b-gray relative`}>
       <div className="flex items-center py-4 pl-4 pr-10">
