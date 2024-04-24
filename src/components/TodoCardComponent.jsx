@@ -26,7 +26,7 @@ export default function TodoCardComponent({ task, title, idx, wsId }) {
         <p className="text-gray">{task?.description}</p>
         <div className="flex justify-between items-center mt-5">
           <div className="bg-bgTag uppercase text-colorTag py-1 px-5 rounded-lg font-bold">
-            {title}
+            {task?.tag}
           </div>
           <div className={classes}></div>
         </div>

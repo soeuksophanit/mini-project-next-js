@@ -1,7 +1,9 @@
+import AddNewTaskComponent from "@/components/AddNewTaskComponent";
 import ListBoardComponentHeader from "@/components/ListBoardComponentHeader";
 import TodoCardComponent from "@/components/TodoCardComponent";
 import { getAllTodoLists } from "@/services/todoService";
 import { filterData } from "@/utils/util";
+import Image from "next/image";
 import React from "react";
 
 const page = async ({ searchParams: { sidebar }, params: { id } }) => {
@@ -17,34 +19,50 @@ const page = async ({ searchParams: { sidebar }, params: { id } }) => {
         />
       </div>
       <div className="grid grid-cols-4 gap-6">
-        {taskTitles.map((title, idx) => (
-          <div key={idx}>
-            <p
-              className={
-                idx == 0
-                  ? classes + "border-b-todo border-b-[3px]"
-                  : idx == 1
-                  ? classes + "border-b-workingOn border-b-[3px]"
-                  : idx == 2
-                  ? classes + "border-b-checking border-b-[3px]"
-                  : classes + "border-b-completed border-b-[3px]"
-              }
-            >
-              {title}
-            </p>
-            <div>
-              {filterData(allTasks, title).map((data) => (
-                <TodoCardComponent
-                  wsId={id}
-                  key={idx}
-                  task={data}
-                  title={title}
-                  idx={idx + 1}
-                />
-              ))}
+        {allTasks.length > 1 ? (
+          taskTitles.map((title, idx) => (
+            <div key={idx}>
+              <p
+                className={
+                  idx == 0
+                    ? classes + "border-b-todo border-b-[3px]"
+                    : idx == 1
+                    ? classes + "border-b-workingOn border-b-[3px]"
+                    : idx == 2
+                    ? classes + "border-b-checking border-b-[3px]"
+                    : classes + "border-b-completed border-b-[3px]"
+                }
+              >
+                {title}
+              </p>
+              <div>
+                {allTasks.length > 1 &&
+                  filterData(allTasks, title).map((data) => (
+                    <TodoCardComponent
+                      wsId={id}
+                      key={idx}
+                      task={data}
+                      title={title}
+                      idx={idx + 1}
+                    />
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <>
+            <Image
+              height={1000}
+              width={1000}
+              src={"/assets/icons/sad.svg"}
+              className="size-[250px]"
+            />
+            <p>No Task</p>
+          </>
+        )}
+      </div>
+      <div className="fixed bottom-4 right-4">
+        <AddNewTaskComponent id={parseInt(id)} />
       </div>
     </div>
   );
