@@ -3,6 +3,16 @@ import React from "react";
 import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
 
 export default function TodoCardComponent({ task }) {
+  console.log("Status : ", task.status);
+  let classes = `rounded-full w-5 h-5 `;
+  classes +=
+    task.status == 1
+      ? " bg-todo"
+      : task.status == 2
+      ? " bg-workingOn"
+      : task.status == 3
+      ? " bg-checking"
+      : " bg-completed";
   return (
     <div className="border border-gray rounded-lg w-todoCardWidt mt-5 relative">
       <div className="p-5">
@@ -18,13 +28,7 @@ export default function TodoCardComponent({ task }) {
           <div className="bg-bgTag text-colorTag py-1 px-5 rounded-lg font-bold">
             {task?.tag}
           </div>
-          <div
-            className={`rounded-full w-5 h-5 ${(task.status = 1
-              ? "bg-todo"
-              : (task.status = 2
-                  ? " bg-workingOn"
-                  : (task.status = 3 ? "bg-checking" : "bg-completed")))}`}
-          ></div>
+          <div className={classes}></div>
         </div>
       </div>
 

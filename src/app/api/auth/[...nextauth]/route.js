@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
-const handler = NextAuth({
+export const authOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
@@ -23,6 +23,7 @@ const handler = NextAuth({
           }
         );
         const { token } = await response.json();
+        console.log("API token ", token);
         if (!token) return null;
         return token;
       },
@@ -33,6 +34,15 @@ const handler = NextAuth({
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     // }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      return { token: token.user, user };
+    },
+    async session({ session, token }) {
+      session.user = token;
+      return session;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
@@ -40,6 +50,6 @@ const handler = NextAuth({
   pages: {
     signIn: "/login",
   },
-});
-
+};
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

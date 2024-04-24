@@ -1,6 +1,8 @@
+import { reqHeader } from "@/lib/configHeder";
 import { revalidateTag } from "next/cache";
 
 export const getAllTodoLists = async (workspaceId) => {
+  const headers = await reqHeader();
   const results = await fetch(
     `${process.env.NEXTAUTH_URL}/v1/tasks?workspaceId=${workspaceId}`,
     {
@@ -8,9 +10,7 @@ export const getAllTodoLists = async (workspaceId) => {
         revalidate: 2,
       },
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.TOKEN}`,
-      },
+      headers,
     }
   );
   const todos = await results.json();
@@ -19,14 +19,13 @@ export const getAllTodoLists = async (workspaceId) => {
 };
 
 export const addNewTask = async (task, workspaceId) => {
+  const headers = await reqHeader();
+
   const request = await fetch(
     `${process.env.NEXTAUTH_URL}/v1/tasks`,
     {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.TOKEN}`,
-      },
+      headers,
       body: JSON.stringify({
         taskTitle: task.title,
         description: task.description,
