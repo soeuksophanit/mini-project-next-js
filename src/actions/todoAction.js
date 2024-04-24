@@ -1,7 +1,7 @@
 "use server";
 
 import { addNewTask } from "@/services/todoService";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 export const addTask = async (formData) => {
   const title = formData.get("title");
@@ -12,3 +12,5 @@ export const addTask = async (formData) => {
   addNewTask({ title, description, tag, dueDate }, workspaceId);
   revalidateTag("task");
 };
+
+

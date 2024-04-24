@@ -33,8 +33,14 @@ const page = async ({ searchParams: { sidebar }, params: { id } }) => {
               {title}
             </p>
             <div>
-              {filterData(allTasks, title).map((data, idx) => (
-                <TodoCardComponent key={idx} task={data} />
+              {filterData(allTasks, title).map((data) => (
+                <TodoCardComponent
+                  wsId={id}
+                  key={idx}
+                  task={data}
+                  title={title}
+                  idx={idx + 1}
+                />
               ))}
             </div>
           </div>
