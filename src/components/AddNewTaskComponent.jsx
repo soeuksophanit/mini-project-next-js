@@ -104,7 +104,7 @@ export default async function AddNewTaskComponent({ id }) {
                 type="submit"
                 className="bg-blue-600 text-white rounded-xl py-2 w-full focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-1"
               >
-                Create
+                <label htmlFor="my_modal_7">Create</label>
               </button>
             </div>
           </form>

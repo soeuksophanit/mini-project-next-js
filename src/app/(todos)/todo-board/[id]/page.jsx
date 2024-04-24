@@ -7,7 +7,11 @@ const page = ({ searchParams: { sidebar }, params: { id } }) => {
   return (
     <div className="pr-10 flex flex-col gap-6">
       <div>
-        <ListBoardComponentHeader sidebarTab={sidebar} id={parseInt(id)} />
+        <ListBoardComponentHeader
+          sidebarTab={sidebar}
+          id={parseInt(id)}
+          page={"Board"}
+        />
       </div>
       <div className="grid grid-cols-4 gap-6">
         {taskTitles.map((title, idx) => (

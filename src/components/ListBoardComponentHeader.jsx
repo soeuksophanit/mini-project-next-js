@@ -2,7 +2,11 @@ import { getAllWorkspace } from "@/services/workSpaceService";
 import Image from "next/image";
 import React from "react";
 
-export default async function ListBoardComponentHeader({ sidebarTab, id }) {
+export default async function ListBoardComponentHeader({
+  sidebarTab,
+  id,
+  page,
+}) {
   const workspaces = await getAllWorkspace();
   const current = workspaces.find((w) => w.workSpaceId == id);
 
@@ -10,7 +14,7 @@ export default async function ListBoardComponentHeader({ sidebarTab, id }) {
     <>
       <div className="text-gray flex text-lg gap-3 mb-5">
         <p className="capitalize">{sidebarTab}</p> /{" "}
-        <p className="capitalize">{current?.workspaceName}</p> /<p>List</p>
+        <p className="capitalize">{current?.workspaceName}</p> /<p>{page}</p>
       </div>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold capitalize">

@@ -11,7 +11,11 @@ const page = async ({ params: { id }, searchParams: { sidebar } }) => {
   return (
     <div className="grid grid-cols-2 gap-10">
       <div className="flex flex-col gap-4">
-        <ListBoardComponentHeader sidebarTab={sidebar} id={parseInt(id)} />
+        <ListBoardComponentHeader
+          sidebarTab={sidebar}
+          id={parseInt(id)}
+          page={"List"}
+        />
         <div className="flex flex-col gap-3">
           {todos.map((todo, idx) => (
             <>
