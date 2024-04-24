@@ -12,8 +12,23 @@ export default async function SidebarComponent() {
   return (
     <div className="pl-10 mt-6 h-screen">
       <div className="flex justify-between">
-        <Image src={"/assets/icons/logo.svg"} width={150} height={100} />
-        <Image src={"/assets/icons/arrow.svg"} width={25} height={30} />
+        <Link href={"/todo-list"}>
+          <Image
+            src={"/assets/icons/logo.svg"}
+            width={150}
+            height={100}
+            priority
+            alt="something"
+          />
+        </Link>
+
+        <Image
+          src={"/assets/icons/arrow.svg"}
+          width={25}
+          height={30}
+          priority
+          alt="something"
+        />
       </div>
 
       {/* workspace */}
@@ -49,7 +64,13 @@ export default async function SidebarComponent() {
       <div className="flex justify-between mt-10">
         <h1 className="uppercase text-gray font-bold">favorite</h1>
 
-        <Image src={"/assets/icons/favorite.svg"} width={22} height={22} />
+        <Image
+          src={"/assets/icons/favorite.svg"}
+          width={22}
+          height={22}
+          priority
+          alt="something"
+        />
       </div>
 
       {/* each favorite workspace */}

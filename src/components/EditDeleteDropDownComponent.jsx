@@ -10,6 +10,7 @@ export default function EditDeleteDropDownComponent() {
           width={20}
           height={20}
           alt={"edit delete card"}
+          priority
         />
       </summary>
       <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">

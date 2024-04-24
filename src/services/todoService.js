@@ -7,7 +7,7 @@ export const getAllTodoLists = async (workspaceId) => {
       },
       method: "GET",
       headers: {
-        Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb3BoYW5pdEBnbWFpbC5jb20iLCJpYXQiOjE3MTM4NTQ5NzQsImV4cCI6MTcxMzg3Mjk3NH0.yEqDmLNj8I_ymJ9rVlepn_PQk21b_JE1C7KC5f45GK0"}`,
+        Authorization: `Bearer ${process.env.TOKEN}`,
       },
     }
   );
@@ -23,7 +23,7 @@ export const addNewTask = async (task, workspaceId) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb3BoYW5pdEBnbWFpbC5jb20iLCJpYXQiOjE3MTM4NTQ5NzQsImV4cCI6MTcxMzg3Mjk3NH0.yEqDmLNj8I_ymJ9rVlepn_PQk21b_JE1C7KC5f45GK0"}`,
+        Authorization: `Bearer ${process.env.TOKEN}`,
       },
       body: JSON.stringify({
         taskTitle: task.title,

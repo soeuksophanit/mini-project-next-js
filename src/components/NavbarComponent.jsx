@@ -43,6 +43,8 @@ export default function NavbarComponent() {
                   src="/assets/icons/search-icon.svg"
                   width={15}
                   height={15}
+                  alt="something"
+                  priority
                 />
                 <span className="sr-only">Search icon</span>
               </div>
@@ -66,6 +68,8 @@ export default function NavbarComponent() {
                 src="/assets/icons/search-icon.svg"
                 width={15}
                 height={15}
+                alt="something"
+                priority
               />
             </button>
 
@@ -73,6 +77,8 @@ export default function NavbarComponent() {
               src="/assets/icons/notification.svg"
               width={22}
               height={22}
+              alt="something"
+              priority
             />
 
             <div
@@ -89,6 +95,8 @@ export default function NavbarComponent() {
                   className="rounded-full"
                   src="https://i.pinimg.com/564x/66/57/c3/6657c31fa4c64e2e9c2f7f8667a85963.jpg"
                   fill
+                  alt="something"
+                  priority
                 />
               </div>
             </div>
@@ -104,6 +112,8 @@ export default function NavbarComponent() {
                   src="/assets/icons/search-icon.svg"
                   width={15}
                   height={15}
+                  alt="something"
+                  priority
                 />
               </div>
               <input
@@ -116,7 +126,9 @@ export default function NavbarComponent() {
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-3xl bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link
-                  href="/todo-list"
+                  href={
+                    "/todo-list/" + pathname.slice(11) + "?sidebar=workspace"
+                  }
                   className={` flex gap-2 py-2 px-3 rounded md:bg-transparent md:p-0 md:dark:text-blue-500`}
                   aria-current="page"
                 >
@@ -125,12 +137,16 @@ export default function NavbarComponent() {
                       src="/assets/icons/list-filled-blue.svg"
                       width={18}
                       height={18}
+                      alt="something"
+                      priority
                     />
                   ) : (
                     <Image
                       src="/assets/icons/list.svg"
                       width={18}
                       height={18}
+                      alt="something"
+                      priority
                     />
                   )}
 
@@ -148,7 +164,9 @@ export default function NavbarComponent() {
 
               <li>
                 <Link
-                  href="/todo-board"
+                  href={
+                    "/todo-board/" + pathname.slice(11) + "?sidebar=workspace"
+                  }
                   className=" flex gap-2 py-2 px-3 text-gray rounded md:bg-transparent  md:p-0 md:dark:text-blue-500"
                   aria-current="page"
                 >
@@ -157,12 +175,16 @@ export default function NavbarComponent() {
                       src="/assets/icons/board-filled-blue.svg"
                       width={18}
                       height={18}
+                      alt="something"
+                      priority
                     />
                   ) : (
                     <Image
                       src="/assets/icons/board.svg"
                       width={18}
                       height={18}
+                      alt="something"
+                      priority
                     />
                   )}
 

@@ -17,6 +17,7 @@ export default async function AddNewTaskComponent({ id }) {
               width={22}
               height={22}
               alt="add new task icon"
+              priority
             />
             <p>New Task</p>
           </div>
@@ -26,6 +27,7 @@ export default async function AddNewTaskComponent({ id }) {
               width={35}
               height={35}
               alt="add new task icon"
+              priority
             />
           </div>
         </div>
@@ -91,8 +93,9 @@ export default async function AddNewTaskComponent({ id }) {
               type="text"
               name="workspaceId"
               // disabled
-              value={id}
-              // defaultValue={id}
+              // value={id}
+              defaultValue={id}
+              readOnly
               className="block border border-gray rounded-lg w-full py-2 px-5 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-1"
             />
 
