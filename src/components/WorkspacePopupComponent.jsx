@@ -7,7 +7,6 @@ export default async function WorkspacePopupComponent() {
   const addWorkspace = async (form) => {
     "use server";
     const workspace = form.get("workspaceName");
-    console.log("New workspace : ", workspace);
     addNewWorkspace(workspace);
     revalidatePath("/todo-list");
   };

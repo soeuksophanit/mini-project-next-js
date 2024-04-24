@@ -7,9 +7,6 @@ export const getAllWorkspace = async () => {
   const request = await fetch(
     `${process.env.NEXTAUTH_URL}/v1/workspaces`,
     {
-      next: {
-        revalidate: 2,
-      },
       method: "GET",
       headers: headers,
     },
@@ -45,5 +42,18 @@ export const addNewWorkspace = async (newWorkSpace) => {
     body: JSON.stringify({ workspaceName: newWorkSpace }),
   });
   const workspace = await request.json();
+  revalidateTag("workspace");
+};
+
+export const addToFav = async (id, isFav) => {
+  const headers = await reqHeader();
+  const req = await fetch(
+    `${process.env.NEXTAUTH_URL}/v1/workspaces/add-to-favorite/${id}`,
+    {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({ isFavorite: !isFav }),
+    }
+  );
   revalidateTag("workspace");
 };

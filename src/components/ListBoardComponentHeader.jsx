@@ -1,6 +1,7 @@
 import { getAllWorkspace } from "@/services/workSpaceService";
 import Image from "next/image";
 import React from "react";
+import AddFavorite from "./AddFavorite";
 
 export default async function ListBoardComponentHeader({
   sidebarTab,
@@ -21,17 +22,19 @@ export default async function ListBoardComponentHeader({
           {current?.workspaceName}
         </h2>
         <span className="border border-gray rounded-lg p-2">
-          <Image
-            src={
-              current?.isFavorite
-                ? "/assets/icons/favorite.svg"
-                : "/assets/icons/star.svg"
-            }
-            width={20}
-            height={20}
-            alt="black star"
-            priority
-          />
+          <AddFavorite id={current?.workSpaceId} isFav={current?.isFavorite}>
+            <Image
+              src={
+                current?.isFavorite
+                  ? "/assets/icons/favorite.svg"
+                  : "/assets/icons/star.svg"
+              }
+              width={20}
+              height={20}
+              alt="black star"
+              priority
+            />
+          </AddFavorite>
         </span>
       </div>
     </>

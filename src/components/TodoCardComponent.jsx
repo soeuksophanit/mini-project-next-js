@@ -3,7 +3,6 @@ import React from "react";
 import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
 
 export default function TodoCardComponent({ task }) {
-  console.log("Status : ", task.status);
   let classes = `rounded-full w-5 h-5 `;
   classes +=
     task.status == 1

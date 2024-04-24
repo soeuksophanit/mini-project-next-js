@@ -7,7 +7,6 @@ import React from "react";
 
 const page = async ({ params: { id }, searchParams: { sidebar } }) => {
   const todos = await getAllTodoLists(parseInt(id));
-  console.log(todos);
   return (
     <div className="grid grid-cols-2 gap-10">
       <div className="flex flex-col gap-4">

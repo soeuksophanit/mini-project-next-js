@@ -6,7 +6,6 @@ import React from "react";
 
 const page = async ({ searchParams: { sidebar }, params: { id } }) => {
   const allTasks = await getAllTodoLists(id);
-  console.log("all tasks", allTasks);
   let classes = "uppercase font-semibold py-2 ";
   return (
     <div className="pr-10 flex flex-col gap-6">

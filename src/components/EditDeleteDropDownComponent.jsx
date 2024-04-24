@@ -3,7 +3,6 @@ import React from "react";
 import DeleteButton from "./DeleteButton";
 
 export default function EditDeleteDropDownComponent({ id }) {
-  console.log("id Edit component", id);
   return (
     <details className="dropdown">
       <summary className=" btn bg-white shadow-none border-0 p-0 h-0 min-h-0">

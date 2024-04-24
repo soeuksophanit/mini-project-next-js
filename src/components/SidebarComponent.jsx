@@ -8,7 +8,6 @@ import { getAllWorkspace } from "@/services/workSpaceService";
 export default async function SidebarComponent() {
   const workspaces = await getAllWorkspace();
   const favorite = workspaces.filter((w) => w.isFavorite);
-  console.log("Fave ", favorite);
   return (
     <div className="pl-10 mt-6 h-screen">
       <div className="flex justify-between">

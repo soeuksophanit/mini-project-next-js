@@ -8,7 +8,6 @@ export const authOptions = {
         password: {},
       },
       async authorize(credentials, req) {
-        console.log("Credentials : ", credentials);
         const response = await fetch(
           process.env.NEXTAUTH_URL + "/v1/auth/login",
           {
@@ -23,7 +22,6 @@ export const authOptions = {
           }
         );
         const { token } = await response.json();
-        console.log("API token ", token);
         if (!token) return null;
         return token;
       },
