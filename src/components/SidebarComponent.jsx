@@ -4,6 +4,7 @@ import EditDeleteDropDownComponent from "./EditDeleteDropDownComponent";
 import WorkspacePopupComponent from "./WorkspacePopupComponent";
 import Link from "next/link";
 import { getAllWorkspace } from "@/services/workSpaceService";
+import ButtonEditWorkspace from "./ButtonEditWorkspace";
 
 export default async function SidebarComponent() {
   const workspaces = await getAllWorkspace();
@@ -55,6 +56,7 @@ export default async function SidebarComponent() {
             </Link>
             <EditDeleteDropDownComponent id={ws.workSpaceId} />
           </div>
+          <ButtonEditWorkspace workspaceId={ws.workSpaceId} />
         </div>
       ))}
 

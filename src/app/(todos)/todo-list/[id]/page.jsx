@@ -16,7 +16,7 @@ const page = async ({ params: { id }, searchParams: { sidebar } }) => {
           id={parseInt(id)}
           page={"List"}
         />
-        {todos.length > 1 ? (
+        {todos.length >= 1 ? (
           <div className="flex flex-col gap-3">
             {todos.map((todo, idx) => (
               <React.Fragment key={idx}>
@@ -36,7 +36,7 @@ const page = async ({ params: { id }, searchParams: { sidebar } }) => {
           </>
         )}
       </div>
-      {todos.length > 1 && (
+      {todos.length >= 1 && (
         <div>
           <MonthlyStatisticsComponent todos={todos} />
         </div>

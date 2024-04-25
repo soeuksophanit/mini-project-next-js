@@ -57,3 +57,13 @@ export const addToFav = async (id, isFav) => {
   );
   revalidateTag("workspace");
 };
+
+export const editWorkspace = async (wsId, newName) => {
+  const headers = await reqHeader();
+  const req = await fetch(`${process.env.NEXTAUTH_URL}/v1/workspaces/${wsId}`, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({ workspaceName: newName }),
+  });
+  revalidateTag("workspace");
+};

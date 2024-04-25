@@ -19,7 +19,7 @@ const page = async ({ searchParams: { sidebar }, params: { id } }) => {
         />
       </div>
       <div className="grid grid-cols-4 gap-6">
-        {allTasks.length > 1 ? (
+        {allTasks.length >= 1 ? (
           taskTitles.map((title, idx) => (
             <div key={idx}>
               <p
@@ -36,7 +36,7 @@ const page = async ({ searchParams: { sidebar }, params: { id } }) => {
                 {title}
               </p>
               <div>
-                {allTasks.length > 1 &&
+                {allTasks.length >= 1 &&
                   filterData(allTasks, title).map((data) => (
                     <TodoCardComponent
                       wsId={id}

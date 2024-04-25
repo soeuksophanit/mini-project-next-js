@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import DeleteButton from "./DeleteButton";
+import ButtonEditWorkspace from "./ButtonEditWorkspace";
 
 export default function EditDeleteDropDownComponent({ id }) {
   return (
@@ -16,7 +17,7 @@ export default function EditDeleteDropDownComponent({ id }) {
       </summary>
       <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
         <li>
-          <a>Edit</a>
+          <label htmlFor={"my_modal_102" + id}>Edit</label>
         </li>
         <li>
           <DeleteButton id={id} />

@@ -1,9 +1,7 @@
-import { deleteTaskTodo } from "@/actions/todoAction";
 import React from "react";
 import ButtonDeleteTask from "./ButtonDeleteTask";
 
 export default async function PopUpDeleteTask({ taskId, wsId }) {
-  console.log(taskId, wsId);
   return (
     <div className="relative">
       {/* The button to open modal */}
